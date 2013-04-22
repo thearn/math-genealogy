@@ -20,6 +20,7 @@ graph_genealogy("Tristan A. Hearn", 162833) #name, mathid
 ```
 This generates:
 ![Graph](http://i.imgur.com/G9UtDYv.jpg)
+as well as a pdf version.
 
 Method `graph_combined_genealogy(name_mathid_pairs)` from `build_genealogy.py` builds a math genealogy graph for a list
 of individuals, then generates their combined genealogy graph.
