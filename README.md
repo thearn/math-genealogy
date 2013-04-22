@@ -4,10 +4,11 @@ A python script to collect data from the mathematics genealogy project and
 generate genealogy graphs, combine graphs, etc.
 
 ## Requirements:
-- pygraphviz
-- Geneagrapher
-- pyparsing==1.5.7
-- pydot 
+- pygraphviz http://networkx.lanl.gov/pygraphviz/
+- networkx http://networkx.github.io/
+- Geneagrapher http://www.davidalber.net/geneagrapher/
+- pyparsing==1.5.7 (last python 2.x version) http://pyparsing.wikispaces.com/
+- pydot https://code.google.com/p/pydot/
 
 ## Usage:
 Method `graph_genealogy(name, mathid)` from `build_genealogy.py` builds a math genealogy graph for a single individual.
