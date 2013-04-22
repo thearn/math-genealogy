@@ -2,7 +2,6 @@ from pydot import graph_from_dot_file
 from networkx import drawing, nx_agraph, compose,MultiDiGraph,nx_pydot,to_networkx_graph
 import os,shutil
 import unicodedata
-import pylab
 
 def generate_dot(person):
     print "gathering data for:",person[0]
@@ -46,8 +45,10 @@ def graph_combined_genealogy(name_id_pairs):
     make_graph("combined")
 
 if __name__ == "__main__":
-    #graph_genealogy("Tristan A. Hearn",162833)
+    #single person graph:
+    graph_genealogy("Tristan A. Hearn",162833)
     
+    #multiple person graph:
     graph_combined_genealogy([["Tristan A. Hearn", 162833],
                               ["Terry Tao", 43967],
                               ["David Alber", 110487]])
