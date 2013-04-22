@@ -32,4 +32,6 @@ graph_combined_genealogy([["Tristan A. Hearn", 162833],
                           ["Terry Tao", 43967],
                           ["David Alber", 110487]])
 ```
-
+This generates:
+![Graph](http://i.imgur.com/zelQDx9.jpg)
+as well as a pdf version.
