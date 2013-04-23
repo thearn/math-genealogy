@@ -36,3 +36,8 @@ graph_combined_genealogy([["Tristan A. Hearn", 162833],
 This generates:
 ![Graph](http://i.imgur.com/zelQDx9.jpg)
 as well as a pdf version.
+
+##TODO:
+
+- Methods that will graph just the minimum path between groups individuals (like the six-degrees of Kevin Bacon project,
+but with groups of arbitrary size)
