@@ -7,7 +7,6 @@ generate genealogy graphs, combine graphs, etc.
 - [pygraphviz](http://networkx.lanl.gov/pygraphviz/)
 - [networkx](http://networkx.github.io/)
 - [Geneagrapher](http://www.davidalber.net/geneagrapher/)
-- [pyparsing==1.5.7](last python 2.x version)] http://pyparsing.wikispaces.com/)
 - [pydot](https://code.google.com/p/pydot/)
 
 ## Usage:
