@@ -4,10 +4,10 @@ A python script to collect data from the mathematics genealogy project and
 generate genealogy graphs, combine graphs, etc.
 
 ## Requirements:
-- pygraphviz
-- Geneagrapher
-- pyparsing==1.5.7
-- pydot 
+- [pygraphviz](http://networkx.lanl.gov/pygraphviz/)
+- [networkx](http://networkx.github.io/)
+- [Geneagrapher](http://www.davidalber.net/geneagrapher/)
+- [pydot](https://code.google.com/p/pydot/)
 
 ## Usage:
 Method `graph_genealogy(name, mathid)` from `build_genealogy.py` builds a math genealogy graph for a single individual.
@@ -35,3 +35,7 @@ graph_combined_genealogy([["Tristan A. Hearn", 162833],
 This generates:
 ![Graph](http://i.imgur.com/zelQDx9.jpg)
 as well as a pdf version.
+
+##TODO:
+
+- Methods that will graph just the minimum path between groups individuals, by finding their most recent common grand-advisor
