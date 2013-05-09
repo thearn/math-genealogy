@@ -3,6 +3,7 @@ from networkx import drawing, nx_agraph, compose,MultiDiGraph,nx_pydot,to_networ
 import os,shutil
 import unicodedata
 
+
 def generate_dot(person):
     print "gathering data for:",person[0]
     fn=person[0]+'.dot'
@@ -12,8 +13,9 @@ def generate_dot(person):
 
 def make_graph(dotfile):
     gc = graph_from_dot_file('dots/'+dotfile+'.dot')
-    gc.write_pdf('graphs/'+dotfile+'.pdf')
-    gc.write_png('graphs/'+dotfile+'.png')
+    gc.set_overlap(0)
+    gc.write_pdf('graphs/'+dotfile+'.pdf', prog='dot') #fdp, dot, 
+    gc.write_png('graphs/'+dotfile+'.png', prog='dot')
 
 def sanitize_string(name):
     name= unicodedata.normalize('NFKD', name).encode('ascii','ignore')
