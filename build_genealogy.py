@@ -7,9 +7,8 @@ import unicodedata
 def generate_dot(person):
     print "gathering data for:",person[0]
     fn=person[0]+'.dot'
-    if not os.path.exists(fn) and not os.path.exists('dots/'+fn):
-        os.system('ggrapher -f "'+fn+'" -a '+str(person[1]))
-        shutil.move(fn,'dots/'+fn)
+    os.system('ggrapher -f "'+fn+'" -a '+str(person[1]))
+    shutil.move(fn,'dots/'+fn)
 
 def make_graph(dotfile):
     gc = graph_from_dot_file('dots/'+dotfile+'.dot')
@@ -51,8 +50,8 @@ if __name__ == "__main__":
     graph_genealogy("Tristan A. Hearn",162833)
     
     #multiple person graph:
-    graph_combined_genealogy([["Tristan A. Hearn", 162833],
-                              ["Terry Tao", 43967],
-                              ["David Alber", 110487]])
+    #graph_combined_genealogy([["Tristan A. Hearn", 162833],
+    #                          ["Terry Tao", 43967],
+    #                          ["David Alber", 110487]])
 
     
