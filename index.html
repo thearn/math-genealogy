@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Math-genealogy-tools : A python script to collect data from the mathematics genealogy project and generate genealogy graphs, combine graphs, etc." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Math-genealogy-tools</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/thearn/math-genealogy-tools">View on GitHub</a>
+
+          <h1 id="project_title">Math-genealogy-tools</h1>
+          <h2 id="project_tagline">A python script to collect data from the mathematics genealogy project and generate genealogy graphs, combine graphs, etc.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/thearn/math-genealogy-tools/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/thearn/math-genealogy-tools/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="math-genealogy-tools" class="anchor" href="#math-genealogy-tools"><span class="octicon octicon-link"></span></a>math-genealogy-tools</h1>
+
+<p>A python script to collect data from the mathematics genealogy project and
+generate genealogy graphs, combine graphs, etc.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements:</h2>
+
+<ul>
+<li><a href="http://networkx.lanl.gov/pygraphviz/">pygraphviz</a></li>
+<li><a href="http://networkx.github.io/">networkx</a></li>
+<li><a href="http://www.davidalber.net/geneagrapher/">Geneagrapher</a></li>
+<li><a href="https://code.google.com/p/pydot/">pydot</a></li>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h2>
+
+<p>Method <code>graph_genealogy(name, mathid)</code> from <code>build_genealogy.py</code> builds a math genealogy graph for a single individual.
+Input arguments are the indiviudal's name (as a string), and their Mathematics Genealogy Project id number (available at
+the end of the url for their page).</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-python"><pre><span class="n">graph_genealogy</span><span class="p">(</span><span class="s">"Tristan A. Hearn"</span><span class="p">,</span> <span class="mi">162833</span><span class="p">)</span> <span class="c">#name, mathid</span>
+</pre></div>
+
+<p>This generates:
+<img src="http://i.imgur.com/G9UtDYv.jpg" alt="Graph">
+as well as a pdf version.</p>
+
+<p>Method <code>graph_combined_genealogy(name_mathid_pairs)</code> from <code>build_genealogy.py</code> builds a math genealogy graph for a list
+of individuals, then generates their combined genealogy graph.
+Input argument is a list of indiviudal's name-id number pairs.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-python"><pre><span class="n">graph_combined_genealogy</span><span class="p">([[</span><span class="s">"Tristan A. Hearn"</span><span class="p">,</span> <span class="mi">162833</span><span class="p">],</span>
+                          <span class="p">[</span><span class="s">"Terry Tao"</span><span class="p">,</span> <span class="mi">43967</span><span class="p">],</span>
+                          <span class="p">[</span><span class="s">"David Alber"</span><span class="p">,</span> <span class="mi">110487</span><span class="p">]])</span>
+</pre></div>
+
+<p>This generates:
+<img src="http://i.imgur.com/zelQDx9.jpg" alt="Graph">
+as well as a pdf version.</p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO:</h2>
+
+<ul>
+<li>Methods that will graph just the minimum path between groups individuals, by finding their most recent common grand-advisor</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Math-genealogy-tools maintained by <a href="https://github.com/thearn">thearn</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
