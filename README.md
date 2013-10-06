@@ -37,5 +37,5 @@ This generates:
 as well as a pdf version.
 
 ##TODO:
-
+- Clean up some of the dependancies (there may be some redundancy)
 - Methods that will graph just the minimum path between groups individuals, by finding their most recent common grand-advisor
