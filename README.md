@@ -1,4 +1,4 @@
-math-genealogy-tools
+math-genealogy
 =====================
 A python script to collect data from the mathematics genealogy project and
 generate genealogy graphs, combine graphs, etc.
