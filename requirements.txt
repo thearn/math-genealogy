@@ -1,0 +1,4 @@
+pygraphviz
+networkx
+pydot2
+http://www.davidalber.net/dist/geneagrapher/Geneagrapher-0.2.1-r2.tar.gz

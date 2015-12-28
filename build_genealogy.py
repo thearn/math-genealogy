@@ -1,57 +1,59 @@
+from tempfile import gettempdir
 from pydot import graph_from_dot_file
-from networkx import drawing, nx_agraph, compose,MultiDiGraph,nx_pydot,to_networkx_graph
-import os,shutil
-import unicodedata
+from networkx import drawing, nx_agraph, compose,MultiDiGraph#,nx_pydot,to_networkx_graph
+from subprocess import call
 
+TMP = gettempdir() +'/'
 
-def generate_dot(person):
-    print "gathering data for:",person[0]
-    fn=person[0]+'.dot'
-    os.system('ggrapher -f "'+fn+'" -a '+str(person[1]))
-    shutil.move(fn,'dots/'+fn)
+def generate_dot(mathid):
+    print("gathering data for MathID: {}".format(mathid))
+    fn = TMP+'{}.dot'.format(mathid)
+    call(['ggrapher','-f',fn,'-a',mathid])  # Geneagrapher
 
-def make_graph(dotfile):
-    gc = graph_from_dot_file('dots/'+dotfile+'.dot')
+def make_graph(mathid,outfmt='pdf'):
+    gc = graph_from_dot_file(TMP+'{}.dot'.format(mathid))
     gc.set_overlap(0)
-    gc.write_pdf('graphs/'+dotfile+'.pdf', prog='dot') #fdp, dot, 
-    gc.write_png('graphs/'+dotfile+'.png', prog='dot')
 
-def sanitize_string(name):
-    name= unicodedata.normalize('NFKD', name).encode('ascii','ignore')
-    name = ', '.join(name.split(' \\n'))
-    return name
-    
-def combine_dots(dotlist):
-    g1=drawing.nx_agraph.read_dot('dots/'+dotlist[-1])
+    if 'png' in outfmt:
+        gc.write_png('{}.png'.format(mathid), prog='dot')
+
+    if 'pdf' in outfmt:
+        gc.write_pdf('{}.pdf'.format(mathid), prog='dot') #fdp, dot,
+
+
+def combine_dots(dotlist,mathid):
+    g1=drawing.nx_agraph.read_dot(TMP+dotlist[-1])
     g = MultiDiGraph()
-    for i in xrange(len(dotlist)):
-        g2=drawing.nx_agraph.read_dot('dots/'+dotlist[i])
+    for d in dotlist:
+        g2=drawing.nx_agraph.read_dot(TMP + d)
         g1=compose(g1,g2)
     g.add_nodes_from(g1.nodes(data=True))
     g.add_edges_from(g1.edges(data=True))
     g.to_directed()
     g = nx_agraph.to_agraph(g)
-    g.write('dots/combined.dot')
+    g.write(TMP+'-'.join(mathid)+'.dot')
 
-def graph_genealogy(name,math_id):
-    generate_dot([name,math_id])
-    make_graph(name)
-    
-def graph_combined_genealogy(name_id_pairs):
-    for name, math_id in name_id_pairs:
-        generate_dot([name,math_id])
-        make_graph(name)
-    names = [name+".dot" for name, math_id in name_id_pairs]
-    combine_dots(names)
-    make_graph("combined")
+def graph_genealogy(math_id,outformat='pdf'):
+    try:
+        make_graph(math_id,outformat)
+    except Exception: #file wasn't found or is corrupt
+        generate_dot(math_id)
+        make_graph(math_id,outformat)
+
+def graph_combined_genealogy(mathid,outfmt='pdf'):
+    for i in mathid:
+        graph_genealogy(i,outfmt)
+#%% combined plot if more than one mathid specified
+    if len(mathid)>1:
+        names = [i+".dot" for i in mathid]
+        combine_dots(names,mathid)
+        make_graph('-'.join(mathid),outfmt)
 
 if __name__ == "__main__":
-    #single person graph:
-    graph_genealogy("Tristan A. Hearn",162833)
-    
-    #multiple person graph:
-    #graph_combined_genealogy([["Tristan A. Hearn", 162833],
-    #                          ["Terry Tao", 43967],
-    #                          ["David Alber", 110487]])
+    from argparse import ArgumentParser
+    p = ArgumentParser(description='easy interface to Math Genealogy Project Plotter')
+    p.add_argument('mathid',help='Math ID of person(s)',type=str,nargs='+')
+    p.add_argument('-o','--output',help='output format [pdf png]',default=['pdf'],nargs='+')
+    p = p.parse_args()
 
-    
+    graph_combined_genealogy(p.mathid,p.output)

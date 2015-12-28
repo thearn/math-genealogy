@@ -3,20 +3,27 @@ math-genealogy
 A python script to collect data from the mathematics genealogy project and
 generate genealogy graphs, combine graphs, etc.
 
-## Requirements:
-- [pygraphviz](http://networkx.lanl.gov/pygraphviz/)
-- [networkx](http://networkx.github.io/)
-- [Geneagrapher](http://www.davidalber.net/geneagrapher/)
-- [pydot](https://code.google.com/p/pydot/)
-
 ## Usage:
+
+    python build_genealogy <mathID>
+    
+    
+## One-time Setup:
+
+    pip install -r requirements.txt
+    
+Due to Geneagrapher 0.2.1, requires Python 2.
+
+
+--------------------------------------------------------------
+## Script Usage:
 Method `graph_genealogy(name, mathid)` from `build_genealogy.py` builds a math genealogy graph for a single individual.
 Input arguments are the indiviudal's name (as a string), and their Mathematics Genealogy Project id number (available at
 the end of the url for their page).
 
-Example:
+### Script Example:
 ```python
-graph_genealogy("Tristan A. Hearn", 162833) #name, mathid
+graph_genealogy(162833) #name, mathid
 ```
 This generates:
 ![Graph](http://i.imgur.com/G9UtDYv.jpg)
@@ -28,9 +35,7 @@ Input argument is a list of indiviudal's name-id number pairs.
 
 Example:
 ```python
-graph_combined_genealogy([["Tristan A. Hearn", 162833],
-                          ["Terry Tao", 43967],
-                          ["David Alber", 110487]])
+graph_combined_genealogy([162833, 43967, 110487])
 ```
 This generates:
 ![Graph](http://i.imgur.com/zelQDx9.jpg)
