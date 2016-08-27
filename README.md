@@ -10,6 +10,7 @@ generate genealogy graphs, combine graphs, etc.
     
 ## One-time Setup:
 
+    sudo apt-get install graphviz graphviz-dev
     pip install -r requirements.txt
     
 Due to Geneagrapher 0.2.1, requires Python 2.
